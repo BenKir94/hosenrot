@@ -27,7 +27,40 @@
       margon-bottom: 20px;    /* Abstand nach unten */
       opacity: 0.95;          /* leicht modern */
     }
+    #countdown {
+    color: #ccc;
+    margin-top: 22px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+    }
+
 </head>
+<script>
+  // 🔴 HIER TRÄGST DU DAS NÄCHSTE SPIEL EIN
+  const nextGame = new Date("2026-01-10T20:30:00").getTime();
+
+  const el = document.getElementById("countdown");
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = nextGame - now;
+
+    if (diff <= 0) {
+      el.innerText = "🚨 Spiel läuft oder ist vorbei";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+    el.innerText = `⏳ Noch ${days} Tage · ${hours} Std · ${minutes} Min`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+</script>
+
 <body>
     <div class="box">
     <img class="logo" src="Hosenrot Transparent Logo.png" alt=Hosenrot, ein hanseatischer Fanblog"
@@ -35,6 +68,7 @@
     <h1>HOSENROT</h1>
     <p> Ein unabhängiger Fußball-Faanblog aus Hamburg</p>
     <p> Mehr folgt....</p>
+    <p id="countdown"></p>
 </div>
 </body>
 </html>

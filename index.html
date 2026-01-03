@@ -1,98 +1,93 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UFT-8">
+  <meta charset="UTF-8">
   <title>Hosenrot</title>
-  <meta name ="viewport" content="width=device-width, initial-scale=1>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-   body{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background:#111;
-    color:#fff;
-    margin:0;
+    body{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:#111;
+      color:#fff;
+      margin:0;
 
-    /* statt starr height:100vh */
-    min-height:100vh;
+      min-height:100vh;
+      padding:24px;
 
-    /* wichtig für mobile */
-    padding:24px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
 
-    /* zentriert den Inhalt */
-    display:flex;
-    justify-content:center;
-    align-items:center;
-  }
+    .box{
+      width:100%;
+      max-width:900px;
+      text-align:center;
+    }
 
-  .box{
-    width:100%;
-    max-width:900px;
-    text-align:center; /* <- wichtig: text-align, nicht test-align */
-  }
+    .logo{
+      display:block;
+      margin:0 auto 18px;
+      width:min(90vw, 420px); /* <- kleiner als vorher */
+      height:auto;
+    }
 
-  .logo{
-    display:block;
-    margin:0 auto 18px;
+    h1{
+      color:#c62828;
+      letter-spacing:2px;
+      margin:0 0 8px;
+    }
 
-    /* DAS ist der Key: auf Handy nie breiter als Bildschirm */
-    width:min(90vw, 520px);
-    height:auto;
-  }
+    p{
+      margin:6px 0;
+    }
 
-  h1{
-    color:#c62828;
-    letter-spacing:2px;
-    margin:0 0 8px;
-  }
-
-  p{
-    margin:6px 0;
-  }
-
-  #countdown{
-    margin-top:16px;
-    opacity:.85;
-    color:#ccc;
-    font-size:0.95rem;
-  }
+    #countdown{
+      margin-top:16px;
+      opacity:.85;
+      color:#ccc;
+      font-size:0.95rem;
+    }
+  </style>
 </head>
 
-
 <body>
-     <div class="box">
+  <div class="box">
     <img class="logo" src="Hosenrot Transparent Logo.png" alt="Hosenrot, ein hanseatischer Fanblog">
     <h1>HOSENROT</h1>
     <p>Ein unabhängiger Fußball-Fanblog aus Hamburg</p>
     <p>Mehr folgt…</p>
+
     <p id="countdown"></p>
   </div>
-    <p id="countdown"></p>
-</div>
-<script>
-  // 🔴 HIER TRÄGST DU DAS NÄCHSTE SPIEL EIN
-  const nextGame = new Date("2026-01-10T20:30:00").getTime();
 
-  const el = document.getElementById("countdown");
-  el.innerText = " Harken JS läuft",
+  <script>
+    // 🔴 HIER TRÄGST DU DAS NÄCHSTE SPIEL EIN
+    const nextGame = new Date("2026-01-10T20:30:00+01:00").getTime();
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const diff = nextGame - now;
+    const el = document.getElementById("countdown");
 
-    if (diff <= 0) {
-      el.innerText = "🚨 Spiel läuft oder ist vorbei";
-      return;
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = nextGame - now;
+
+      if (diff <= 0) {
+        el.innerText = "🚨 Spiel läuft oder ist vorbei";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+      el.innerText = `⏳ Noch ${days} Tage · ${hours} Std · ${minutes} Min`;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-
-    el.innerText = `⏳ Noch ${days} Tage · ${hours} Std · ${minutes} Min`;
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 60000);
-</script>
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+  </script>
 </body>
 </html>
+
   

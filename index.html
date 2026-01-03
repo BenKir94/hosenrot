@@ -5,49 +5,66 @@
   <title>Hosenrot</title>
   <meta name ="viewport" content="width=device-width, initial-scale=1>
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #111;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;   /* statt height */
-    margin: 0;
-    padding: 20px;       /* ganz wichtig mobil */
+   body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background:#111;
+    color:#fff;
+    margin:0;
 
-    }
-    .box{
-    text-align: center;
-    }
-    h1 {
-    color: #c62828;
-    letter-spacing: 2px;
-    }
-    .logo { 
-    max-width: 90vw;      /* wichtig für Handy */
-    width: 320px;         /* Desktop-Größe */
-    height: auto;
-    margin: 0 auto 24px;  /* horizontal wirklich zentriert */
-    display: block;
-    }
-    #countdown {
-    color: #ccc;
-    margin-top: 22px;
-    font-size: 0.95rem;
-    opacity: 0.85;
-    }
+    /* statt starr height:100vh */
+    min-height:100vh;
 
+    /* wichtig für mobile */
+    padding:24px;
+
+    /* zentriert den Inhalt */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .box{
+    width:100%;
+    max-width:900px;
+    text-align:center; /* <- wichtig: text-align, nicht test-align */
+  }
+
+  .logo{
+    display:block;
+    margin:0 auto 18px;
+
+    /* DAS ist der Key: auf Handy nie breiter als Bildschirm */
+    width:min(90vw, 520px);
+    height:auto;
+  }
+
+  h1{
+    color:#c62828;
+    letter-spacing:2px;
+    margin:0 0 8px;
+  }
+
+  p{
+    margin:6px 0;
+  }
+
+  #countdown{
+    margin-top:16px;
+    opacity:.85;
+    color:#ccc;
+    font-size:0.95rem;
+  }
 </head>
 
 
 <body>
-    <div class="box">
-    <img class="logo" src="Hosenrot Transparent Logo.png" alt=Hosenrot, ein hanseatischer Fanblog"
-  
+     <div class="box">
+    <img class="logo" src="Hosenrot Transparent Logo.png" alt="Hosenrot, ein hanseatischer Fanblog">
     <h1>HOSENROT</h1>
-    <p> Ein unabhängiger Fußball-Faanblog aus Hamburg</p>
-    <p> Mehr folgt....</p>
+    <p>Ein unabhängiger Fußball-Fanblog aus Hamburg</p>
+    <p>Mehr folgt…</p>
+    <p id="countdown"></p>
+  </div>
     <p id="countdown"></p>
 </div>
 <script>

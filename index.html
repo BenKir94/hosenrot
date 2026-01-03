@@ -6,14 +6,16 @@
   <meta name ="viewport" content="width=device-width, initial-scale=1>
   <style>
     body {
-      font-family: system-ui, -apple-system, BlinkMacSytemFont, sans-serif;
-      background: #111;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      magrin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #111;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;   /* statt height */
+    margin: 0;
+    padding: 20px;       /* ganz wichtig mobil */
+
     }
     .box{
     text-align: center;
@@ -22,10 +24,12 @@
     color: #c62828;
     letter-spacing: 2px;
     }
-    .logo {
-      width: 160px:           /* Größe des Logos */
-      margon-bottom: 20px;    /* Abstand nach unten */
-      opacity: 0.95;          /* leicht modern */
+    .logo { 
+    max-width: 90vw;      /* wichtig für Handy */
+    width: 320px;         /* Desktop-Größe */
+    height: auto;
+    margin: 0 auto 24px;  /* horizontal wirklich zentriert */
+    display: block;
     }
     #countdown {
     color: #ccc;

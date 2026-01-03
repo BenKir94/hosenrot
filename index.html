@@ -70,7 +70,8 @@
 
   <script>
     // 🔴 HIER TRÄGST DU DAS NÄCHSTE SPIEL EIN
-    const nextGame = new Date("2026-01-10T20:30:00+01:00").getTime();
+    const opponent = "SC Freiburg";
+    const nextGame = new Date("2026-01-10T15:30:00+01:00").getTime();
 
     const el = document.getElementById("countdown");
 
@@ -87,7 +88,7 @@
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-      el.innerText = `⏳ Noch ${days} Tage · ${hours} Std · ${minutes} Min`;
+      el.innerText = `⏳ Noch ${days} Tage · ${hours} Std · ${minutes} Min bis wir gegen ${opponent} spielen.`;
     }
 
     updateCountdown();

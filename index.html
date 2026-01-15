@@ -55,6 +55,11 @@
       font-size:0.95rem;
       color:#666;
     }
+    #spruch{
+    margin-top:12px;
+    font-style: italic;
+    color:#666;
+    }
   </style>
 </head>
 
@@ -94,6 +99,15 @@
 
     updateCountdown();
     setInterval(updateCountdown, 60000);
+    const sprueche = [
+  "Der Ball ist rund. Der HSV manchmal auch.",
+  "Heute schon irgendwem 'Moin' gesagt? Pflicht.",
+  "Hosenrot meint: Kampfgeist schlägt Tabellenplatz.",
+  "Wenn’s läuft: genießen. Wenn nicht: trotzdem meckern."
+];
+
+document.getElementById("spruch").innerText =
+  "💬 " + sprueche[Math.floor(Math.random() * sprueche.length)];
   </script>
 </body>
 </html>

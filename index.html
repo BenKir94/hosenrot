@@ -1,155 +1,56 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hosenrot</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    body{
-     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background:#f7f7f7;   /* weiß / hellgrau */
-    color:#1a1a1a;        /* gut lesbares Dunkelgrau */
-    margin:0;
-
-    min-height:100vh;
-    padding:24px;
-
-    display:flex;
-    justify-content:center;
-    align-items:flex-start; /* oben beginnen, blogtypisch */
-    }
-
-    .box{
-      width:100%;
-    max-width:900px;
-    text-align:center;
-    
-    background:#ffffff;
-    padding:32px 24px;
-    border-radius:12px;
-    
-    box-shadow:0 10px 80px rgba(0,0,0,0.08);
-    }
-
-    .logo{
-      display:block;
-      margin:0 auto 20px;
-      width:min(80vw, 420px);
-      height:auto;
-    }
-
-    h1{
-       color:#c62828;
-    letter-spacing:2px;
-    margin:8px 0 6px;
-    font-weight:700;
-    }
-
-    p{
-      margin:6px 0;
-    }
-
-    #countdown{
-      margin-top:16px;
-      font-size:0.95rem;
-      color:#666;
-    }
-    #spruch{
-    margin-top:12px;
-    font-style: italic;
-    color:#666;
-    }
-    .sep{
-  border:0;
-  border-top:1px solid rgba(0,0,0,.08);
-  margin:20px 0;
-}
-
-h2{
-  margin:10px 0 8px;
-  font-size:1.05rem;
-}
-
-.posts{
-  display:grid;
-  gap:12px;
-}
-
-.post{
-  display:block;
-  padding:14px 16px;
-  border-radius:14px;
-  background:#fff;
-  border:1px solid rgba(0,0,0,.08);
-  text-decoration:none;
-  color:inherit;
-}
-
-.post-title{font-weight:700;}
-.post-meta{font-size:.8rem;opacity:.6;margin-top:2px;}
-.post-teaser{margin-top:6px;opacity:.85;}
-.post-title {
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.post-meta {
-  font-size: .8rem;
-  opacity: .6;
-}
-
-.post-teaser {
-  margin-top: 6px;
-  opacity: .85;
-}
-
-
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="box">
-    <img class="logo" src="Hosenrot Transparent Logo.png" alt="Hosenrot, ein hanseatischer Fanblog">
-    <h1>HOSENROT</h1>
-    <p>Ein unabhängiger Fußball-Fanblog aus Hamburg</p>
-    <p>Mehr folgt…</p>
-    <hr class="sep">
+  <main class="page">
+    <div class="box">
+      <img class="logo" src="Hosenrot Transparent Logo.png" alt="Hosenrot, ein hanseatischer Fanblog" />
 
-<h2>Blog</h2>
+      <h1>HOSENROT</h1>
+      <p>Ein unabhängiger Fußball-Fanblog aus Hamburg</p>
+      <p>Mehr folgt…</p>
 
-<div class="posts">
+      <hr class="sep" />
 
-  <a class="post" href="posts/2026-01-10-erster-text.html">
-    <div class="post-title">Warum dieser Blog entsteht</div>
-    <div class="post-meta">10.01.2026 · Meinung</div>
-    <div class="post-teaser">
-      Worum es hier gehen soll – und worum nicht.
+      <h2>Blog</h2>
+
+      <div class="posts">
+        <a class="post" href="posts/2026-01-10-erster-text.html">
+          <div class="post-title">Warum dieser Blog entsteht</div>
+          <div class="post-meta">10.01.2026 · Meinung</div>
+          <div class="post-teaser">Worum es hier gehen soll – und worum nicht.</div>
+        </a>
+
+        <a class="post" href="posts/2026-01-17-dominant-aber-nicht-belohnt.html">
+          <div class="post-title">Dominant, aber nicht belohnt – HSV verpasst den Heimsieg</div>
+          <div class="post-meta">17.01.2026 · Meinung</div>
+          <div class="post-teaser">Ein Punkt, der bleibt. Zwei, die fehlen.</div>
+        </a>
+      </div>
+
+      <p id="spruch"></p>
+      <p id="countdown"></p>
     </div>
-  </a>
-
- <a class="post" href="posts/2026-01-17-dominant-aber-nicht-belohnt.html">
-  <div class="post-title">
-    Dominant, aber nicht belohnt – HSV verpasst den Heimsieg
-  </div>
-  <div class="post-meta">17.01.2026 · Meinung</div>
-  <div class="post-teaser">
-    Ein Punkt, der bleibt. Zwei, die fehlen.
-  </div>
-</a>
-
-</div>
-</div>
-    <p id="spruch"></p>
-
-    <p id="countdown"></p>
-  </div>
+  </main>
 
   <script>
-    // HIER TRÄGST DU DAS NÄCHSTE SPIEL EIN
-    const opponent = "Borussia Mönchengladbach";
-    const nextGame = new Date("2026-01-17T15:30:00+01:00").getTime();
+    // Spruch
+    const sprueche = [
+      "Heute schon irgendwem 'Moin' gesagt? Pflicht.",
+      "Wenn’s läuft: genießen. Wenn nicht: trotzdem meckern.",
+      "Der Ball ist rund. Der HSV manchmal auch."
+    ];
+    document.getElementById("spruch").innerText = "💬 " + sprueche[Math.floor(Math.random() * sprueche.length)];
 
+    // Countdown
+    const opponent = "Borussia Mönchengladbach";
+    const nextGame = new Date("2026-01-17T15:30:00").getTime();
     const el = document.getElementById("countdown");
 
     function updateCountdown() {
@@ -170,17 +71,6 @@ h2{
 
     updateCountdown();
     setInterval(updateCountdown, 60000);
-    const sprueche = [
-  "Der Ball ist rund. Der HSV manchmal auch.",
-  "Heute schon irgendwem 'Moin' gesagt? Pflicht.",
-  "Hosenrot meint: Kampfgeist schlägt Tabellenplatz.",
-  "Wenn’s läuft: genießen. Wenn nicht: trotzdem meckern."
-];
-
-document.getElementById("spruch").innerText =
-  "💬 " + sprueche[Math.floor(Math.random() * sprueche.length)];
   </script>
 </body>
 </html>
-
-  
